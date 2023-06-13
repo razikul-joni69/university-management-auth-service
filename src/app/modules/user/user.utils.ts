@@ -1,4 +1,4 @@
-import { User } from './users.model';
+import { User } from './user.model';
 
 // Get the last created user id
 export const findLastUserId = async () => {
