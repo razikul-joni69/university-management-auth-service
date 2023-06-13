@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
-
+import router from './modules/users/users.route';
 const app: Application = express();
 
 // cors
@@ -11,7 +11,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req: Request, res: Response) => {
+// INFO: Application routes
+app.use('/api/v1/users', router);
+
+console.log(app.get('env'));
+
+app.get('/', async (req: Request, res: Response) => {
     res.json({
         message: 'Success',
         data: 'Auth Server Is Running',
