@@ -1,7 +1,7 @@
 import path from 'path';
 import { createLogger, format, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
-const { combine, timestamp, label, prettyPrint, printf } = format;
+const { combine, timestamp, label, printf } = format;
 
 // Custon Log Format
 const myFormat = printf(({ level, message, label, timestamp }) => {
@@ -35,7 +35,7 @@ const logger = createLogger({
 
 const errorLogger = createLogger({
     level: 'error',
-    format: combine(label({ label: 'UMAS' }), timestamp(), prettyPrint()),
+    format: combine(label({ label: 'UMAS' }), timestamp(), myFormat),
     transports: [
         new transports.Console(),
         new DailyRotateFile({
