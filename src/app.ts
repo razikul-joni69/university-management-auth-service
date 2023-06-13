@@ -14,8 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 // INFO: Application routes
 app.use('/api/v1/users', router);
 
-console.log(app.get('env'));
-
 app.get('/', async (req: Request, res: Response) => {
     res.json({
         message: 'Success',
