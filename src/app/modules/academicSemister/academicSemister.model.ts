@@ -19,7 +19,7 @@ const academicSemisterSchema = new Schema<IAcademidSemister>(
             enum: academicSemisterTitles,
         },
         year: {
-            type: Number,
+            type: String,
             require: true,
         },
         code: {
@@ -44,6 +44,7 @@ const academicSemisterSchema = new Schema<IAcademidSemister>(
 );
 
 academicSemisterSchema.pre('save', async function (next) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isExist: any = await AcademicSemister.findOne({
         title: this.title,
         year: this.year,
